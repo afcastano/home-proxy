@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/afcastano/home-proxy",
   "dependencies": {
+    "bouncy": "^3.2.2",
     "connect": "^3.3.5",
+    "http-proxy": "^1.11.1",
     "serve-static": "^1.9.2"
   }
 }
