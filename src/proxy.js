@@ -17,12 +17,18 @@ var server = http.createServer(function(req, res) {
 	// // You can define here your custom logic to handle the request
   // // and then proxy the request.
   // proxy.web(req, res, { target: 'http://127.0.0.1:5060' });
-  debugger;
   if(startsWith(req.headers.host, 'utorrent.')) {
-  	console.log('torrent url... redirecting... ');
   	proxy.web(req,res, {target: 'http://192.168.0.100:8080'});
+  } else if(startsWith(req.headers.host, 'torden.')) {
+    proxy.web(req,res, {target: 'http://192.168.0.100:3030'});
   } else {
-  	serve(req,res);
+    var next = function(){
+      res.writeHead(404, {"Content-Type": "text/plain"});
+      res.write("404 Not Found\n");
+      res.end();
+      return;
+    }
+    serve(req,res, next);
   }
 });
 
