@@ -8,6 +8,9 @@ var proxy = httpProxy.createProxyServer({});
 var serve = serveStatic(__dirname);
 
 var startsWith = function(url, value) {
+  if (!url) {
+    return false;
+  }
 	var ret = url.slice(0, value.length) == value;
 	return ret;
 }
